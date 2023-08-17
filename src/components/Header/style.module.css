@@ -1,0 +1,33 @@
+.header {
+  background-color: var(--gray-700);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-logo {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  width: 1.375rem;
+  height: 2.25rem;
+  margin-top: 0.5rem;
+}
+
+.container-font {
+  font-size: 2.46rem;
+  font-weight: 700;
+  /* height: 3rem; */
+  user-select: none;
+}
+
+.logo-font-color-a {
+  color: var(--blue);
+}
+
+.logo-font-color-b {
+  color: var(--purple-dark);
+}
