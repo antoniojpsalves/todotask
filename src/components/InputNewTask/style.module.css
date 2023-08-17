@@ -1,0 +1,42 @@
+.container-input-new-task {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: .5rem;
+
+  transform: translateY(-50%);
+  width: 46rem;
+  margin: 0 auto;
+}
+
+.input {
+  padding: 16px;
+  height: 100%;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid var(--gray-700);
+  background: var(--gray-500);
+  flex: 1;
+  caret-color: var(--gray-100);
+  color: var(--gray-200);
+}
+
+.button {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  color: var(--gray-100);
+
+  border-radius: 8px;
+  background: var(--blue-dark);
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--blue);
+  transition: .4s all;
+}
