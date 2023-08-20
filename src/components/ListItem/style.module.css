@@ -1,0 +1,82 @@
+.itemTask {
+  background: var(--gray-500);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+
+  color: var(--gray-100);
+  height: 4.5rem;
+}
+
+.itemTask + .itemTask {
+  margin-top: .75rem;
+}
+
+.itemCheck {
+  display: flex;
+  gap: .75rem;
+}
+
+.itemTask button {
+  background: transparent;
+  border: none;
+  color: var(--gray-300);
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 2px;
+
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 5px 5.522px 5px 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemTask button:hover {
+  color: var(--danger);
+  background-color: var(--gray-400);
+}
+
+.checkbox-round {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  background-color: var(--gray-500);
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-round:hover {
+  border: 2px solid var(--blue-dark);
+  background-color: rgba(30,111,159, .3);
+  transition: .2s all;
+}
+
+.checkbox-round:checked {
+  background-color: var(--purple);
+  border: 2px solid var(--purple);
+}
+
+.checkbox-round::before {
+  content: "\2714"; /* Código Unicode para o símbolo de checkmark */
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: white;
+}
+
+.checkbox-round:checked::before {
+  display: block;
+}
