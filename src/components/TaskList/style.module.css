@@ -5,4 +5,27 @@
   justify-content: center;
   width: 46rem;
   margin: 0 auto;
+  max-height: 30rem;
+  overflow: hidden; /* Oculta a barra de rolagem */
+  transition: overflow 0.3s; /* Adiciona uma transição suave */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  padding-right: 1rem;
+}
+
+.listContainer:hover {
+  overflow: auto; 
+}
+
+html ::-webkit-scrollbar {
+  /* padding-left: 1rem; */
+  width: 8px;
+}
+html ::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: var(--purple-dark);
+}
+html ::-webkit-scrollbar-track {
+  border-radius: 50px;
+  background: var(--gray-500);
 }
