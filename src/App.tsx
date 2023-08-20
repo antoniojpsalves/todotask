@@ -3,32 +3,11 @@ import { Header } from './components/Header'
 import { InputNewTask } from './components/InputNewTask'
 import style from './app.module.css'
 import { TaskPanel } from './components/TaskPane'
-import { TaskList } from './components/TaskList'
+import { TaskList, ItemListProps } from './components/TaskList'
 
 function App() {
 
-  const exempleList = [
-    {
-      id: 1,
-      finalizado: false,
-      content: 'asdasdasdas',
-    },
-    {
-      id: 2,
-      finalizado: false,
-      content: 'asdasdasdas',
-    },
-    {
-      id: 3,
-      finalizado: false,
-      content: 'asdasdasdas',
-    },
-    {
-      id: 4,
-      finalizado: false,
-      content: 'asdasdasdas',
-    }
-  ]
+  const exempleList: ItemListProps[] = []
 
   return (
     <div className={style.content}>
