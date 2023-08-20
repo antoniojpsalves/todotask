@@ -1,0 +1,15 @@
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 736px;
+  margin: 2.3125rem auto;
+}
+
+.header-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}

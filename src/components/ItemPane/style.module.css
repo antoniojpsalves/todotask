@@ -1,0 +1,36 @@
+.itemPaneContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  user-select: none;
+}
+
+
+.itemLabel {
+  font-family: Inter;
+  color: var(--blue);
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.itemCompletedLabel {
+  font-family: Inter;
+  color: var(--purple);
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.itemCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-200);
+  padding: .125rem .5rem;
+  border-radius: 999px;
+  background-color: var(--gray-400);
+
+  font-family: Inter;
+  font-size: .75rem;
+  font-weight: 700;
+}
