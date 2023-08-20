@@ -6,14 +6,14 @@ import style from './style.module.css'
 import { Trash } from 'phosphor-react'
 
 
-export function ListItem({ id, finished, content, handleDeleteFromListItem, numCreatedTasks, setNumFinishedTasks }: ItemListProps) {
+export function ListItem({ id, finished, content, handleDeleteFromListItem, numFinishedTasks, setNumFinishedTasks, onHandleChangeCheckMark }: ItemListProps) {
 
 
   const [checked, setChecked] = useState(finished)
 
   function changeChecked() {
+    !checked ? setNumFinishedTasks(numFinishedTasks + 1) : setNumFinishedTasks(numFinishedTasks - 1)
     setChecked(!checked)
-    setNumFinishedTasks(numCreatedTasks + 1)
   }
 
   function handleOnDeleteItem(id: string) {
@@ -29,7 +29,7 @@ export function ListItem({ id, finished, content, handleDeleteFromListItem, numC
           name={id}
           className={style['checkbox-round']}
           checked={checked}
-          onClick={changeChecked}
+          onChange={() => { onHandleChangeCheckMark(id); changeChecked() }}
         />
         <label htmlFor={id} className={checked ? style.finishedItem : ''}>{content}</label>
       </div>

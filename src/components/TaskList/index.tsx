@@ -11,7 +11,9 @@ export interface ItemListProps {
   content: string
   handleDeleteFromListItem: (id: string) => void
   numCreatedTasks: number
+  numFinishedTasks: number
   setNumFinishedTasks: (n: number) => void
+  onHandleChangeCheckMark: (id: string) => void
 }
 
 
@@ -20,16 +22,34 @@ interface TaskListProps {
   setListItem: (nlist: ItemOfListProps[]) => void
   setNumCreatedTasks: (n: number) => void
   numCreatedTasks: number
-  setNumFinishedTasks: () => void
+  numFinishedTasks: number
+  setNumFinishedTasks: (n: number) => void
 }
 
-export function TaskList({ taskList, setListItem, setNumCreatedTasks, numCreatedTasks, setNumFinishedTasks }: TaskListProps) {
+export function TaskList({ taskList, setListItem, setNumCreatedTasks, numCreatedTasks, numFinishedTasks, setNumFinishedTasks }: TaskListProps) {
 
 
   function handleDeleteFromListItem(id: string) {
     const newList = taskList.filter(item => item.id !== id)
     setListItem(newList)
     setNumCreatedTasks(newList.length)
+
+    const [listRemoved] = taskList.filter(item => item.id === id)
+
+    if (listRemoved.finished === true) {
+      setNumFinishedTasks(numFinishedTasks - 1)
+    }
+  }
+
+
+  function handleChangeCheckMark(id: string) {
+    const newList = taskList.map(item => {
+      if (item.id === id) {
+        item.finished = !item.finished
+      }
+      return item
+    })
+    setListItem(newList)
   }
 
   return (
@@ -39,13 +59,15 @@ export function TaskList({ taskList, setListItem, setNumCreatedTasks, numCreated
           taskList.map((item) => {
             return (
               <ListItem
-                key={item.id + item.content}
+                key={item.id}
                 id={item.id}
                 content={item.content}
                 finished={item.finished}
                 handleDeleteFromListItem={() => handleDeleteFromListItem(item.id)}
                 numCreatedTasks={numCreatedTasks}
-                setNumFinishedTasks={() => setNumFinishedTasks}
+                numFinishedTasks={numFinishedTasks}
+                onHandleChangeCheckMark={handleChangeCheckMark}
+                setNumFinishedTasks={setNumFinishedTasks}
               />
             )
           })

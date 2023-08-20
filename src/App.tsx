@@ -32,7 +32,8 @@ function App() {
         setListItem={setUserTaskList}
         setNumCreatedTasks={setNumCreatedTasks}
         numCreatedTasks={numCreatedTasks}
-        setNumFinishedTasks={() => setNumFinishedTasks}
+        numFinishedTasks={numFinishedTasks}
+        setNumFinishedTasks={setNumFinishedTasks}
       />
     </div>
   )
