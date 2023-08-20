@@ -10,20 +10,26 @@ export interface ItemListProps {
   finished: boolean
   content: string
   handleDeleteFromListItem: (id: string) => void
+  numCreatedTasks: number
+  setNumFinishedTasks: (n: number) => void
 }
 
 
 interface TaskListProps {
   taskList: ItemOfListProps[] | []
   setListItem: (nlist: ItemOfListProps[]) => void
+  setNumCreatedTasks: (n: number) => void
+  numCreatedTasks: number
+  setNumFinishedTasks: () => void
 }
 
-export function TaskList({ taskList, setListItem }: TaskListProps) {
+export function TaskList({ taskList, setListItem, setNumCreatedTasks, numCreatedTasks, setNumFinishedTasks }: TaskListProps) {
 
 
   function handleDeleteFromListItem(id: string) {
     const newList = taskList.filter(item => item.id !== id)
     setListItem(newList)
+    setNumCreatedTasks(newList.length)
   }
 
   return (
@@ -38,6 +44,8 @@ export function TaskList({ taskList, setListItem }: TaskListProps) {
                 content={item.content}
                 finished={item.finished}
                 handleDeleteFromListItem={() => handleDeleteFromListItem(item.id)}
+                numCreatedTasks={numCreatedTasks}
+                setNumFinishedTasks={() => setNumFinishedTasks}
               />
             )
           })

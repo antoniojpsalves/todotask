@@ -6,13 +6,14 @@ import style from './style.module.css'
 import { Trash } from 'phosphor-react'
 
 
-export function ListItem({ id, finished, content, handleDeleteFromListItem }: ItemListProps) {
+export function ListItem({ id, finished, content, handleDeleteFromListItem, numCreatedTasks, setNumFinishedTasks }: ItemListProps) {
 
 
   const [checked, setChecked] = useState(finished)
 
   function changeChecked() {
     setChecked(!checked)
+    setNumFinishedTasks(numCreatedTasks + 1)
   }
 
   function handleOnDeleteItem(id: string) {

@@ -8,38 +8,32 @@ import { useState } from 'react'
 
 function App() {
 
-  // const exempleList: ItemListProps[] = [
-  //   {
-  //     id: 1,
-  //     finalizado: false,
-  //     content: 'asdasdasdas',
-  //   },
-  //   {
-  //     id: 2,
-  //     finalizado: false,
-  //     content: 'asdasdasdas',
-  //   },
-  //   {
-  //     id: 3,
-  //     finalizado: false,
-  //     content: 'asdasdasdas',
-  //   },
-  //   {
-  //     id: 4,
-  //     finalizado: false,
-  //     content: 'asdasdasdas',
-  //   }
-  // ]
+  const [userTaskList, setUserTaskList] = useState<ItemOfListProps[]>([])
 
+  const [numCreatedTasks, setNumCreatedTasks] = useState(0)
 
-  const [userTaskList, setUserTaskList] = useState<ItemOfListProps[]>([]);
+  const [numFinishedTasks, setNumFinishedTasks] = useState(0)
 
   return (
     <div className={style.content}>
       <Header />
-      <InputNewTask addTask={setUserTaskList} before={userTaskList} />
-      <TaskPanel />
-      <TaskList taskList={userTaskList} setListItem={setUserTaskList} />
+      <InputNewTask
+        addTask={setUserTaskList}
+        before={userTaskList}
+        numCreatedTasks={numCreatedTasks}
+        setNumCreatedTasks={setNumCreatedTasks}
+      />
+      <TaskPanel
+        numCreatedTasks={numCreatedTasks}
+        numFinishedTasks={numFinishedTasks}
+      />
+      <TaskList
+        taskList={userTaskList}
+        setListItem={setUserTaskList}
+        setNumCreatedTasks={setNumCreatedTasks}
+        numCreatedTasks={numCreatedTasks}
+        setNumFinishedTasks={() => setNumFinishedTasks}
+      />
     </div>
   )
 }

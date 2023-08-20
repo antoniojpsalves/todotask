@@ -5,8 +5,10 @@ import { ChangeEvent, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface InputNewTaskProps {
-  addTask: (tasks: ItemOfListProps[]) => void;
-  before: ItemOfListProps[];
+  addTask: (tasks: ItemOfListProps[]) => void
+  before: ItemOfListProps[]
+  numCreatedTasks: number
+  setNumCreatedTasks: (n: number) => void
 }
 
 export interface ItemOfListProps {
@@ -16,7 +18,7 @@ export interface ItemOfListProps {
 }
 
 
-export function InputNewTask({ addTask, before }: InputNewTaskProps) {
+export function InputNewTask({ addTask, before, numCreatedTasks, setNumCreatedTasks }: InputNewTaskProps) {
 
   const [inputValue, setInputValue] = useState('')
 
@@ -26,7 +28,7 @@ export function InputNewTask({ addTask, before }: InputNewTaskProps) {
   }
 
   function handleAddNewTask() {
-    console.log(inputValue)
+    // console.log(inputValue)
 
 
     if (inputValue.length === 0) return;
@@ -38,6 +40,7 @@ export function InputNewTask({ addTask, before }: InputNewTaskProps) {
     }
 
     addTask([...before, newTask])
+    setNumCreatedTasks(numCreatedTasks + 1)
     setInputValue('')
   }
 
