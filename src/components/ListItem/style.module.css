@@ -80,3 +80,7 @@
 .checkbox-round:checked::before {
   display: block;
 }
+
+.finishedItem {
+  text-decoration: line-through;
+}

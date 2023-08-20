@@ -1,19 +1,30 @@
 import { EmptyListItem } from '../EmptyListItem'
+import { ItemOfListProps } from '../InputNewTask'
 import { ListItem } from '../ListItem'
 import style from './style.module.css'
 
 
-interface TaskListProps {
-  taskList: ItemListProps[] | []
-}
 
 export interface ItemListProps {
   id: string
-  finalizado: boolean
+  finished: boolean
   content: string
+  handleDeleteFromListItem: (id: string) => void
 }
 
-export function TaskList({ taskList }: TaskListProps) {
+
+interface TaskListProps {
+  taskList: ItemOfListProps[] | []
+  setListItem: (nlist: ItemOfListProps[]) => void
+}
+
+export function TaskList({ taskList, setListItem }: TaskListProps) {
+
+
+  function handleDeleteFromListItem(id: string) {
+    const newList = taskList.filter(item => item.id !== id)
+    setListItem(newList)
+  }
 
   return (
     <div className={style.listContainer}>
@@ -25,7 +36,8 @@ export function TaskList({ taskList }: TaskListProps) {
                 key={item.id + item.content}
                 id={item.id}
                 content={item.content}
-                finalizado={item.finalizado}
+                finished={item.finished}
+                handleDeleteFromListItem={() => handleDeleteFromListItem(item.id)}
               />
             )
           })

@@ -1,9 +1,9 @@
 import './global.css'
 import { Header } from './components/Header'
-import { InputNewTask } from './components/InputNewTask'
+import { InputNewTask, ItemOfListProps } from './components/InputNewTask'
 import style from './app.module.css'
 import { TaskPanel } from './components/TaskPane'
-import { TaskList, ItemListProps } from './components/TaskList'
+import { TaskList } from './components/TaskList'
 import { useState } from 'react'
 
 function App() {
@@ -32,14 +32,14 @@ function App() {
   // ]
 
 
-  const [userTaskList, setUserTaskList] = useState<ItemListProps[]>([]);
+  const [userTaskList, setUserTaskList] = useState<ItemOfListProps[]>([]);
 
   return (
     <div className={style.content}>
       <Header />
       <InputNewTask addTask={setUserTaskList} before={userTaskList} />
       <TaskPanel />
-      <TaskList taskList={userTaskList} />
+      <TaskList taskList={userTaskList} setListItem={setUserTaskList} />
     </div>
   )
 }

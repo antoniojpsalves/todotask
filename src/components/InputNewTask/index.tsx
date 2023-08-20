@@ -3,12 +3,16 @@ import style from './style.module.css'
 import plus from '../../assets/plus.png'
 import { ChangeEvent, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { ItemListProps } from '../TaskList';
-
 
 interface InputNewTaskProps {
-  addTask: (tasks: ItemListProps[]) => void;
-  before: ItemListProps[];
+  addTask: (tasks: ItemOfListProps[]) => void;
+  before: ItemOfListProps[];
+}
+
+export interface ItemOfListProps {
+  id: string
+  content: string
+  finished: boolean
 }
 
 
@@ -27,10 +31,10 @@ export function InputNewTask({ addTask, before }: InputNewTaskProps) {
 
     if (inputValue.length === 0) return;
 
-    const newTask: ItemListProps = {
+    const newTask: ItemOfListProps = {
       id: uuidv4(),
       content: inputValue,
-      finalizado: false
+      finished: false
     }
 
     addTask([...before, newTask])
