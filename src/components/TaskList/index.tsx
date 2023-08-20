@@ -8,7 +8,7 @@ interface TaskListProps {
 }
 
 export interface ItemListProps {
-  id: number
+  id: string
   finalizado: boolean
   content: string
 }
