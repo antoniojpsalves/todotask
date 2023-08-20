@@ -12,7 +12,7 @@ export function EmptyListItem() {
         <img src={clipboard} alt="Lista vazia" title='A lista de tarefas encontra-se vazia' />
       </div>
       <div className={style.message}>
-        <h3>Você ainda não tem tarefas cadastradas</h3>
+        <h3 className={style.title}>Você ainda não tem tarefas cadastradas</h3>
         <span>Crie tarefas e organize seus itens a fazer</span>
       </div>
     </div>
